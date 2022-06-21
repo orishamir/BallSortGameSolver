@@ -10,7 +10,7 @@ For example, this level:
 
 Can be sorted like this:
 
-<img src="https://im4.ezgif.com/tmp/ezgif-4-c7dca51719.gif" alt="Level 1" width="50%"/>
+![Solution](https://im4.ezgif.com/tmp/ezgif-4-c7dca51719.gif)
 
 However, a ball can only be moved on top of another if they have 
 the same color and if the amount of balls already in the tube is less than 4.
