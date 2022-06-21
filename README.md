@@ -9,8 +9,7 @@ For example, this level:
 <img src="https://external-preview.redd.it/XSo_QIU2xDjoIKqPMIGBDOixX6yCxoqlfsnGhdtZP-k.jpg?auto=webp&s=ac07c23c1fe0911d7336f54d8320e948789b9dc7" alt="Level 3" width="50%"/>
 
 Can be sorted like this:
-
-<img src="https://im4.ezgif.com/tmp/ezgif-4-c7dca51719.gif" width="40%" height="40%" />
+[Link To Gif](https://im4.ezgif.com/tmp/ezgif-4-c7dca51719.gif)
 
 However, a ball can only be moved on top of another if they have 
 the same color and if the amount of balls already in the tube is less than 4.
