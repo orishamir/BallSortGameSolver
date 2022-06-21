@@ -1,6 +1,7 @@
 import time
 import mouse
 from TubesDetector import getTubes, moveOnScreen, figure_out_amount_of_tubes
+from time import sleep
 
 TUBE_CAPACITY = 4
 LAST = -1
@@ -23,13 +24,11 @@ def isValidMove(tubes, fromtube, totube):
     if len(tubes[fromtube]) == 0 or len(tubes[totube]) >= TUBE_CAPACITY:
         return False
 
-    # for making him less retarded
+    # for making him less stupid
     if len(tubes[fromtube]) == 4 and tubes[fromtube].count(tubes[fromtube][0]) == 4:
         return False
     if len(tubes[fromtube]) == 3 and tubes[fromtube].count(tubes[fromtube][0]) == 3:
         return False
-    # if len(tubes[fromtube]) == 2 and tubes[fromtube].count(tubes[fromtube][0]) == 2:
-    #     return False
     # -----
     if len(tubes[totube]) == 0:
         return True
@@ -67,25 +66,15 @@ def find_winning_moves(tubes):
             return True, [[fromtube, totube]] + mvs
     return False, []
 
-from time import sleep
 
-def simplify_moves(moves):
-    newmoves = []
-    for i in range(0, len(moves)-1, 2):
-        mv1, mv2 = moves[i:i+2]
-        if mv1[1] == mv2[0]:
-            newmoves.append([mv1[0], mv2[1]])
-        else:
-            newmoves.append(mv1)
-            newmoves.append(mv2)
-    return newmoves
+class UnwinableError(Exception): pass
 
 def win(n):
     sleep(3)
     tubes = getTubes(n)
     iswin, moves = find_winning_moves(tubes)
     if not iswin:
-        raise EOFError("Unwinable")
+        raise UnwinableError("Unwinable")
 
     # moves = simplify_moves(moves)
     print(moves)
@@ -93,18 +82,6 @@ def win(n):
         fromtube, totube = move
         moveOnScreen(n, fromtube, totube)
 
-d = 10
-for i in range(d):
-    sleep(10)
-    n = figure_out_amount_of_tubes()
-    print(f"{n=}")
-    assert int(n) == n
-    n = int(n)
-    try:
-        win(n)
-    except EOFError:
-        print("Unwinable")
-        d += 1
-    mouse.move(*next_button_pos)
-    time.sleep(0.5)
-    mouse.click()
+sleep(10)
+n = figure_out_amount_of_tubes()
+win(n)

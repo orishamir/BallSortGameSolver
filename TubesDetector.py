@@ -3,7 +3,7 @@ from string import printable
 import time
 import mouse
 
-d = 0.05
+d = 0.3
 
 tubesAmount2pos = {
     11:
